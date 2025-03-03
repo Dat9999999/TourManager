@@ -1,51 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TourManagerment.Data;
+using TourManagerment.Models;
+using TourManagerment.Services;
 
 namespace TourManagerment.Forms.Authentication
 {
     public partial class LoginForm : Form
     {
-        //sample data user  
-        const String SampleUserName = "admin";
-        const String SamplePassword = "123";
-
+        private readonly IAuthenService authenService;
+        public User AuthenticatedUser { get; private set; }
         public LoginForm()
         {
             InitializeComponent();
+            authenService = new AuthenService();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
+            string userName = tbUserName.Text.Trim();
+            string password = tbPassword.Text.Trim();
 
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            String UserName = tbUserName.Text;
-            String Password = tbPassword.Text;
-            if(UserName == "" || 
-                Password == "")
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin đăng nhập");
                 return;
             }
 
-            if(UserName != SampleUserName ||  Password != SamplePassword)
+            User user = await authenService.AuthenticateSynce(userName, password); ;
+            
+            if (user == null)
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
                 return;
-
             }
-            MessageBox.Show("Đăng nhập thành công");
 
-
+            AuthenticatedUser = user;
+            this.DialogResult = DialogResult.OK;
+        }
+        
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

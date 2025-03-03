@@ -1,4 +1,4 @@
-using TourManagerment.Forms.Authentication;
+﻿using TourManagerment.Forms.Authentication;
 
 namespace TourManagerment
 {
@@ -12,10 +12,9 @@ namespace TourManagerment
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-
-
-            ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            // Chạy LoginForm trước
+            MainForm main = new MainForm(null);
+            Application.Run(main);
 
         }
     }
