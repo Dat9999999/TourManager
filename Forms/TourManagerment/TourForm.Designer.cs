@@ -167,6 +167,7 @@
             Controls.Add(label1);
             Name = "TourForm";
             Text = "TourForm";
+            Load += TourForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTourList).EndInit();
             ResumeLayout(false);
             PerformLayout();

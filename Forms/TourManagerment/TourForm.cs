@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TourManagerment.Data;
+using TourManagerment.Models;
 
 namespace TourManagerment.Forms
 {
@@ -15,6 +17,15 @@ namespace TourManagerment.Forms
         public TourForm()
         {
             InitializeComponent();
+        }
+
+        private void TourForm_Load(object sender, EventArgs e)
+        {
+            using (var context = new MTourContext())
+            {
+                var tours = context.Tours.ToList();
+                dgvTourList.DataSource = tours;
+            }
         }
     }
 }
