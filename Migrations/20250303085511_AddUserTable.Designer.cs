@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TourManagerment.Data;
 
@@ -11,9 +12,11 @@ using TourManagerment.Data;
 namespace TourManagerment.Migrations
 {
     [DbContext(typeof(MTourContext))]
-    partial class MTourContextModelSnapshot : ModelSnapshot
+    [Migration("20250303085511_AddUserTable")]
+    partial class AddUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,22 +135,6 @@ namespace TourManagerment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Password = "admin",
-                            Role = "admin",
-                            UserName = "admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Password = "nhanvien",
-                            Role = "employee",
-                            UserName = "nhanvien"
-                        });
                 });
 #pragma warning restore 612, 618
         }

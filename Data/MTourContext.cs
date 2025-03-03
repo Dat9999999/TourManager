@@ -19,6 +19,7 @@ namespace TourManagerment.Data
         }
 
         public DbSet<Tour> Tours { get; set; }
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Tour>().HasData(
@@ -60,6 +61,22 @@ namespace TourManagerment.Data
                     Pics = "halong.jpg",
                     TourGuideID = 3,
                     TransportationMethod = "Xe khách"
+                }
+            );
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    UserName = "admin",
+                    Password = "admin",
+                    Role = "admin"
+                },
+                new User
+                {
+                    Id = 2,
+                    UserName = "nhanvien",
+                    Password = "nhanvien",
+                    Role = "employee"
                 }
             );
         }

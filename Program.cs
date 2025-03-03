@@ -1,3 +1,5 @@
+using TourManagerment.Forms.Authentication;
+
 namespace TourManagerment
 {
     internal static class Program
@@ -13,7 +15,7 @@ namespace TourManagerment
 
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
 
         }
     }
