@@ -27,4 +27,4 @@ TourManagement/
 │   │── Helper.cs            
 │   │── Constants.cs         
 │── Program.cs               # Điểm vào chính của ứng dụng
-│── App.config               # File cấu hình
+│── appsetting.json        # File cấu hình
