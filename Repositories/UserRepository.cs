@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using TourManagerment.Data;
+﻿using TourManagerment.Data;
 using TourManagerment.Models;
 
 namespace TourManagerment.Repositories

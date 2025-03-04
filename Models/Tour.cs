@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TourManagerment.Models
 {
+    [Table("Tours")]
     public class Tour
     {
         [Key]
@@ -28,11 +28,15 @@ namespace TourManagerment.Models
 
         public string? Pics { get; set; } // Hình ảnh (lưu đường dẫn)
 
-        [ForeignKey("TourGuide")]
-        public int TourGuideID { get; set; } // ID hướng dẫn viên
+        public int? TourGuideId { get; set; } // ID hướng dẫn viên
+
+        [ForeignKey("TourGuideId")]
+        public TourGuide? TourGuide { get; set; }
 
         [Required, StringLength(50)]
         public string? TransportationMethod { get; set; } // Phương thức vận chuyển (xe hoặc máy bay)
+
+        public ICollection<TourOrder> TourOrders { get; set; } = new List<TourOrder>();
 
         // Navigation property
         //public virtual TourGuide TourGuide { get; set; }
