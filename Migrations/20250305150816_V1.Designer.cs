@@ -12,8 +12,8 @@ using TourManagerment.Data;
 namespace TourManagerment.Migrations
 {
     [DbContext(typeof(MTourContext))]
-    [Migration("20250304171743_V2")]
-    partial class V2
+    [Migration("20250305150816_V1")]
+    partial class V1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,13 +59,14 @@ namespace TourManagerment.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("TourOrderID")
+                    b.Property<int?>("TourOrderID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TourOrderID")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[TourOrderID] IS NOT NULL");
 
                     b.ToTable("Invoices");
                 });
@@ -98,7 +99,7 @@ namespace TourManagerment.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TourGuideID")
+                    b.Property<int?>("TourGuideId")
                         .HasColumnType("int");
 
                     b.Property<string>("TransportationMethod")
@@ -113,7 +114,7 @@ namespace TourManagerment.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TourGuideID");
+                    b.HasIndex("TourGuideId");
 
                     b.ToTable("Tours");
                 });
@@ -160,7 +161,7 @@ namespace TourManagerment.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
@@ -168,7 +169,7 @@ namespace TourManagerment.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("TourID")
+                    b.Property<int?>("TourID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -193,7 +194,6 @@ namespace TourManagerment.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
@@ -209,9 +209,7 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.TourOrder", "TourOrder")
                         .WithOne("Invoice")
-                        .HasForeignKey("TourManagerment.Models.Invoice", "TourOrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TourManagerment.Models.Invoice", "TourOrderID");
 
                     b.Navigation("TourOrder");
                 });
@@ -220,9 +218,7 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.TourGuide", "TourGuide")
                         .WithMany("Tours")
-                        .HasForeignKey("TourGuideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TourGuideId");
 
                     b.Navigation("TourGuide");
                 });
@@ -242,15 +238,11 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.Customer", "Customer")
                         .WithMany("TourOrders")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.HasOne("TourManagerment.Models.Tour", "Tour")
                         .WithMany("TourOrders")
-                        .HasForeignKey("TourID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TourID");
 
                     b.Navigation("Customer");
 
@@ -274,14 +266,12 @@ namespace TourManagerment.Migrations
 
             modelBuilder.Entity("TourManagerment.Models.TourOrder", b =>
                 {
-                    b.Navigation("Invoice")
-                        .IsRequired();
+                    b.Navigation("Invoice");
                 });
 
             modelBuilder.Entity("TourManagerment.Models.User", b =>
                 {
-                    b.Navigation("TourGuide")
-                        .IsRequired();
+                    b.Navigation("TourGuide");
                 });
 #pragma warning restore 612, 618
         }
