@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TourManagerment.Data;
 
@@ -11,9 +12,11 @@ using TourManagerment.Data;
 namespace TourManagerment.Migrations
 {
     [DbContext(typeof(MTourContext))]
-    partial class MTourContextModelSnapshot : ModelSnapshot
+    [Migration("20250304171036_V1")]
+    partial class V1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,14 +59,13 @@ namespace TourManagerment.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("TourOrderID")
+                    b.Property<int>("TourOrderID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TourOrderID")
-                        .IsUnique()
-                        .HasFilter("[TourOrderID] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Invoices");
                 });
@@ -96,7 +98,7 @@ namespace TourManagerment.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("TourGuideId")
+                    b.Property<int>("TourGuideID")
                         .HasColumnType("int");
 
                     b.Property<string>("TransportationMethod")
@@ -111,9 +113,50 @@ namespace TourManagerment.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TourGuideId");
+                    b.HasIndex("TourGuideID");
 
                     b.ToTable("Tours");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Cost = 5000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Đà Nẵng - Bà Nà Hills",
+                            Pics = "danang.jpg",
+                            StartDate = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideID = 1,
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Cost = 7000000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2025, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Phú Quốc - Biển xanh",
+                            Pics = "phuquoc.jpg",
+                            StartDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideID = 2,
+                            TransportationMethod = "Máy bay",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Cost = 3000000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2025, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hà Nội - Hạ Long",
+                            Pics = "halong.jpg",
+                            StartDate = new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideID = 3,
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.TourGuide", b =>
@@ -158,7 +201,7 @@ namespace TourManagerment.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CustomerID")
+                    b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
@@ -166,7 +209,7 @@ namespace TourManagerment.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("TourID")
+                    b.Property<int>("TourID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -191,6 +234,7 @@ namespace TourManagerment.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
@@ -200,13 +244,31 @@ namespace TourManagerment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "admin",
+                            Role = "admin",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Password = "nhanvien",
+                            Role = "employee",
+                            UserName = "nhanvien"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.Invoice", b =>
                 {
                     b.HasOne("TourManagerment.Models.TourOrder", "TourOrder")
                         .WithOne("Invoice")
-                        .HasForeignKey("TourManagerment.Models.Invoice", "TourOrderID");
+                        .HasForeignKey("TourManagerment.Models.Invoice", "TourOrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("TourOrder");
                 });
@@ -215,7 +277,9 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.TourGuide", "TourGuide")
                         .WithMany("Tours")
-                        .HasForeignKey("TourGuideId");
+                        .HasForeignKey("TourGuideID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("TourGuide");
                 });
@@ -235,11 +299,15 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.Customer", "Customer")
                         .WithMany("TourOrders")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TourManagerment.Models.Tour", "Tour")
                         .WithMany("TourOrders")
-                        .HasForeignKey("TourID");
+                        .HasForeignKey("TourID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
 
@@ -263,12 +331,14 @@ namespace TourManagerment.Migrations
 
             modelBuilder.Entity("TourManagerment.Models.TourOrder", b =>
                 {
-                    b.Navigation("Invoice");
+                    b.Navigation("Invoice")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TourManagerment.Models.User", b =>
                 {
-                    b.Navigation("TourGuide");
+                    b.Navigation("TourGuide")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
