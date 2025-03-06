@@ -7,7 +7,7 @@ namespace TourManagerment.Models
     public class Tour
     {
         [Key]
-        public int ID { get; set; }  // Khóa chính
+        public int Id { get; set; }  // Khóa chính
 
         [Required, StringLength(255)]
         public string? Name { get; set; }// Tên tour
