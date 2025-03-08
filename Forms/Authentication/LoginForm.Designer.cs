@@ -59,6 +59,7 @@
             tbUserName.Name = "tbUserName";
             tbUserName.Size = new Size(350, 27);
             tbUserName.TabIndex = 2;
+            tbUserName.Text = "admin";
             // 
             // tbPassword
             // 
@@ -66,6 +67,7 @@
             tbPassword.Name = "tbPassword";
             tbPassword.Size = new Size(350, 27);
             tbPassword.TabIndex = 3;
+            tbPassword.Text = "admin";
             // 
             // btnLogin
             // 
@@ -88,6 +90,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             Load += LoginForm_Load;
             ResumeLayout(false);

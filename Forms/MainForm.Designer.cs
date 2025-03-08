@@ -32,6 +32,8 @@
             lblRole = new Label();
             btnLogout = new Button();
             btnReport = new Button();
+            btnManageCustomer = new Button();
+            btnManageTourOrder = new Button();
             SuspendLayout();
             // 
             // btnManageTour
@@ -74,16 +76,39 @@
             btnReport.UseVisualStyleBackColor = true;
             btnReport.Visible = false;
             // 
+            // btnManageCustomer
+            // 
+            btnManageCustomer.Location = new Point(47, 124);
+            btnManageCustomer.Name = "btnManageCustomer";
+            btnManageCustomer.Size = new Size(185, 29);
+            btnManageCustomer.TabIndex = 4;
+            btnManageCustomer.Text = "Quản lý khách hàng";
+            btnManageCustomer.UseVisualStyleBackColor = true;
+            btnManageCustomer.Click += btnManageCustomer_Click;
+            // 
+            // btnManageTourOrder
+            // 
+            btnManageTourOrder.Location = new Point(47, 175);
+            btnManageTourOrder.Name = "btnManageTourOrder";
+            btnManageTourOrder.Size = new Size(185, 29);
+            btnManageTourOrder.TabIndex = 5;
+            btnManageTourOrder.Text = "Quản lý đặt tour";
+            btnManageTourOrder.UseVisualStyleBackColor = true;
+            btnManageTourOrder.Click += btnManageTourOrder_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnManageTourOrder);
+            Controls.Add(btnManageCustomer);
             Controls.Add(btnReport);
             Controls.Add(btnLogout);
             Controls.Add(lblRole);
             Controls.Add(btnManageTour);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Trang Chủ";
             Load += MainForm_Load;
             ResumeLayout(false);
@@ -96,5 +121,7 @@
         private Label lblRole;
         private Button btnLogout;
         private Button btnReport;
+        private Button btnManageCustomer;
+        private Button btnManageTourOrder;
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TourManagerment.Migrations
 {
     /// <inheritdoc />
@@ -67,7 +69,7 @@ namespace TourManagerment.Migrations
                 name: "Tours",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
@@ -81,7 +83,7 @@ namespace TourManagerment.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tours", x => x.ID);
+                    table.PrimaryKey("PK_Tours", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Tours_TourGuides_TourGuideId",
                         column: x => x.TourGuideId,
@@ -107,12 +109,13 @@ namespace TourManagerment.Migrations
                         name: "FK_TourOrders_Customers_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TourOrders_Tours_TourID",
                         column: x => x.TourID,
                         principalTable: "Tours",
-                        principalColumn: "ID");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -121,6 +124,8 @@ namespace TourManagerment.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    amount = table.Column<long>(type: "bigint", nullable: false),
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TourOrderID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -131,6 +136,48 @@ namespace TourManagerment.Migrations
                         column: x => x.TourOrderID,
                         principalTable: "TourOrders",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "Address", "Name", "Phone" },
+                values: new object[,]
+                {
+                    { 1, "Hà Nội", "Nguyễn Văn A", "0987654321" },
+                    { 2, "TP Hồ Chí Minh", "Trần Thị B", "0976543210" },
+                    { 3, "Đà Nẵng", "Lê Văn C", "0965432109" },
+                    { 4, "Hải Phòng", "Phạm Văn D", "0954321098" },
+                    { 5, "Cần Thơ", "Hoàng Thị E", "0943210987" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Password", "Role", "UserName" },
+                values: new object[,]
+                {
+                    { 1, "admin", "admin", "admin" },
+                    { 2, "nhanvien", "employee", "nhanvien" },
+                    { 3, "nhanvien1", "employee", "nhanvien1" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TourGuides",
+                columns: new[] { "Id", "Birthday", "Name", "PhoneNumber", "UserId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1985, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nguyễn Văn A", "0987654321", 1 },
+                    { 2, new DateTime(1990, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Trần Thị B", "0976543210", 2 },
+                    { 3, new DateTime(1995, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lê Văn C", "0965432109", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tours",
+                columns: new[] { "Id", "Cost", "Duration", "EndDate", "Name", "Pics", "StartDate", "TourGuideId", "TransportationMethod", "Type" },
+                values: new object[,]
+                {
+                    { 1, 5000000m, 3, new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đà Nẵng - Bà Nà Hills", "danang.jpg", new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Máy bay", "Cao cấp" },
+                    { 2, 7000000m, 4, new DateTime(2025, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Phú Quốc - Biển xanh", "phuquoc.jpg", new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Tiêu chuẩn" },
+                    { 3, 3000000m, 2, new DateTime(2025, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Nội - Hạ Long", "halong.jpg", new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiết kiệm" }
                 });
 
             migrationBuilder.CreateIndex(

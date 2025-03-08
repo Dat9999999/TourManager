@@ -1,6 +1,4 @@
-﻿using TourManagerment.Forms.Authentication;
-
-namespace TourManagerment
+﻿namespace TourManagerment
 {
     internal static class Program
     {
@@ -15,6 +13,9 @@ namespace TourManagerment
             // Chạy LoginForm trước
             MainForm main = new MainForm(null);
             Application.Run(main);
+
+
+
 
         }
     }

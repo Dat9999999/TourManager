@@ -26,6 +26,15 @@ namespace TourManagerment.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer { Id = 1, Name = "Nguyễn Văn A", Phone = "0987654321", Address = "Hà Nội" },
+                new Customer { Id = 2, Name = "Trần Thị B", Phone = "0976543210", Address = "TP Hồ Chí Minh" },
+                new Customer { Id = 3, Name = "Lê Văn C", Phone = "0965432109", Address = "Đà Nẵng" },
+                new Customer { Id = 4, Name = "Phạm Văn D", Phone = "0954321098", Address = "Hải Phòng" },
+                new Customer { Id = 5, Name = "Hoàng Thị E", Phone = "0943210987", Address = "Cần Thơ" }
+            );
+
             modelBuilder.Entity<TourGuide>().HasData(
                 new TourGuide
                 {
@@ -116,6 +125,12 @@ namespace TourManagerment.Data
                     Role = "employee"
                 }
             );
+
+            modelBuilder.Entity<TourOrder>()
+            .HasOne(o => o.Customer)
+            .WithMany(c => c.TourOrders)
+            .HasForeignKey(o => o.CustomerID)
+            .OnDelete(DeleteBehavior.Cascade); // Tự động xóa các TourOrders nếu xóa Customer
         }
 
     }

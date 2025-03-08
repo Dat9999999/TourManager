@@ -1,5 +1,7 @@
 ﻿using TourManagerment.Forms;
 using TourManagerment.Forms.Authentication;
+using TourManagerment.Forms.Booking;
+using TourManagerment.Forms.CustomerManagement;
 using TourManagerment.Models;
 
 namespace TourManagerment
@@ -62,7 +64,7 @@ namespace TourManagerment
             btnManageTour.Visible = true;
         }
 
-       
+
 
         private void HandleUnauthorizedUser()
         {
@@ -83,6 +85,16 @@ namespace TourManagerment
             TourForm tourForm = new TourForm();
             tourForm.ShowDialog();
         }
+        private void btnManageCustomer_Click(object sender, EventArgs e)
+        {
+            CustomerForm f = new CustomerForm();
+            f.ShowDialog();
+        }
+        private void btnManageTourOrder_Click(object sender, EventArgs e)
+        {
+            TourOrderForm f = new TourOrderForm();
+            f.ShowDialog();
+        }
 
         private void lblRole_Click(object sender, EventArgs e)
         {
@@ -95,5 +107,6 @@ namespace TourManagerment
             //Load lại form 
             MainForm_Load(sender, e);
         }
+
     }
 }

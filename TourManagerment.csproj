@@ -33,4 +33,12 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Mydata\University\Nam3Hk2\CongNgheDotNet\GiuaKi\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Mydata\University\Nam3Hk2\CongNgheDotNet\GiuaKi\.editorconfig" />
+  </ItemGroup>
+
 </Project>

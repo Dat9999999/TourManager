@@ -46,6 +46,43 @@ namespace TourManagerment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Hà Nội",
+                            Name = "Nguyễn Văn A",
+                            Phone = "0987654321"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "TP Hồ Chí Minh",
+                            Name = "Trần Thị B",
+                            Phone = "0976543210"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Đà Nẵng",
+                            Name = "Lê Văn C",
+                            Phone = "0965432109"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Hải Phòng",
+                            Name = "Phạm Văn D",
+                            Phone = "0954321098"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Cần Thơ",
+                            Name = "Hoàng Thị E",
+                            Phone = "0943210987"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.Invoice", b =>
@@ -58,6 +95,12 @@ namespace TourManagerment.Migrations
 
                     b.Property<int?>("TourOrderID")
                         .HasColumnType("int");
+
+                    b.Property<long>("amount")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -325,7 +368,8 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.Customer", "Customer")
                         .WithMany("TourOrders")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TourManagerment.Models.Tour", "Tour")
                         .WithMany("TourOrders")

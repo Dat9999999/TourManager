@@ -12,7 +12,7 @@ using TourManagerment.Data;
 namespace TourManagerment.Migrations
 {
     [DbContext(typeof(MTourContext))]
-    [Migration("20250305152721_initDB")]
+    [Migration("20250308103855_initDB")]
     partial class initDB
     {
         /// <inheritdoc />
@@ -49,6 +49,43 @@ namespace TourManagerment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Hà Nội",
+                            Name = "Nguyễn Văn A",
+                            Phone = "0987654321"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "TP Hồ Chí Minh",
+                            Name = "Trần Thị B",
+                            Phone = "0976543210"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Đà Nẵng",
+                            Name = "Lê Văn C",
+                            Phone = "0965432109"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Hải Phòng",
+                            Name = "Phạm Văn D",
+                            Phone = "0954321098"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Cần Thơ",
+                            Name = "Hoàng Thị E",
+                            Phone = "0943210987"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.Invoice", b =>
@@ -62,6 +99,12 @@ namespace TourManagerment.Migrations
                     b.Property<int?>("TourOrderID")
                         .HasColumnType("int");
 
+                    b.Property<long>("amount")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TourOrderID")
@@ -73,11 +116,11 @@ namespace TourManagerment.Migrations
 
             modelBuilder.Entity("TourManagerment.Models.Tour", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
@@ -112,11 +155,52 @@ namespace TourManagerment.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("TourGuideId");
 
                     b.ToTable("Tours");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cost = 5000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Đà Nẵng - Bà Nà Hills",
+                            Pics = "danang.jpg",
+                            StartDate = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideId = 1,
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cost = 7000000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2025, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Phú Quốc - Biển xanh",
+                            Pics = "phuquoc.jpg",
+                            StartDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideId = 2,
+                            TransportationMethod = "Máy bay",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cost = 3000000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2025, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hà Nội - Hạ Long",
+                            Pics = "halong.jpg",
+                            StartDate = new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourGuideId = 3,
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.TourGuide", b =>
@@ -148,6 +232,32 @@ namespace TourManagerment.Migrations
                         .IsUnique();
 
                     b.ToTable("TourGuides");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Birthday = new DateTime(1985, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Nguyễn Văn A",
+                            PhoneNumber = "0987654321",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Birthday = new DateTime(1990, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Trần Thị B",
+                            PhoneNumber = "0976543210",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Birthday = new DateTime(1995, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Lê Văn C",
+                            PhoneNumber = "0965432109",
+                            UserId = 3
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.TourOrder", b =>
@@ -203,6 +313,29 @@ namespace TourManagerment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "admin",
+                            Role = "admin",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Password = "nhanvien",
+                            Role = "employee",
+                            UserName = "nhanvien"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Password = "nhanvien1",
+                            Role = "employee",
+                            UserName = "nhanvien1"
+                        });
                 });
 
             modelBuilder.Entity("TourManagerment.Models.Invoice", b =>
@@ -238,7 +371,8 @@ namespace TourManagerment.Migrations
                 {
                     b.HasOne("TourManagerment.Models.Customer", "Customer")
                         .WithMany("TourOrders")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TourManagerment.Models.Tour", "Tour")
                         .WithMany("TourOrders")
