@@ -24,6 +24,11 @@ namespace TourManagerment
                 this.Show();
                 Authorization();
             }
+            else
+            {
+                // Đóng MainForm nếu đăng nhập thất bại hoặc bị hủy
+                this.Close();
+            }
         }
         private void Authorization()
         {
