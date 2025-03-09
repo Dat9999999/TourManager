@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TourManagerment.Data;
-using TourManagerment.Models;
+﻿using TourManagerment.Models;
 using TourManagerment.Services;
 
 namespace TourManagerment.Forms.Authentication
@@ -31,7 +25,7 @@ namespace TourManagerment.Forms.Authentication
             }
 
             User user = await authenService.AuthenticateSynce(userName, password); ;
-            
+
             if (user == null)
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
@@ -41,7 +35,7 @@ namespace TourManagerment.Forms.Authentication
             AuthenticatedUser = user;
             this.DialogResult = DialogResult.OK;
         }
-        
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
         }

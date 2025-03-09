@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using TourManagerment.Models;
+﻿using TourManagerment.Models;
 
 namespace TourManagerment.Repositories
 {

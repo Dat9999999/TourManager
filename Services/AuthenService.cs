@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourManagerment.Models;
+﻿using TourManagerment.Models;
 using TourManagerment.Repositories;
 
 namespace TourManagerment.Services
@@ -11,7 +6,8 @@ namespace TourManagerment.Services
     class AuthenService : IAuthenService
     {
         private readonly IUserRepository _userRepository;
-        public AuthenService() {
+        public AuthenService()
+        {
             _userRepository = new UserRepository();
         }
         async Task<User> IAuthenService.AuthenticateSynce(String userName, String password)
@@ -23,6 +19,6 @@ namespace TourManagerment.Services
             }
             return user;
         }
-       
+
     }
 }
