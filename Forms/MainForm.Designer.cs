@@ -35,6 +35,8 @@
             btnManageCustomer = new Button();
             btnManageTourOrder = new Button();
             btnSchedule = new Button();
+            btnViewReport = new Button();
+            btnStatisticsForm = new Button();
             SuspendLayout();
             // 
             // btnManageTour
@@ -59,7 +61,7 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(47, 364);
+            btnLogout.Location = new Point(47, 409);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(123, 48);
             btnLogout.TabIndex = 2;
@@ -69,7 +71,7 @@
             // 
             // btnReport
             // 
-            btnReport.Location = new Point(47, 329);
+            btnReport.Location = new Point(47, 374);
             btnReport.Name = "btnReport";
             btnReport.Size = new Size(94, 29);
             btnReport.TabIndex = 3;
@@ -107,11 +109,33 @@
             btnSchedule.UseVisualStyleBackColor = true;
             btnSchedule.Click += btnSchedule_Click;
             // 
+            // btnViewReport
+            // 
+            btnViewReport.Location = new Point(47, 272);
+            btnViewReport.Name = "btnViewReport";
+            btnViewReport.Size = new Size(185, 29);
+            btnViewReport.TabIndex = 7;
+            btnViewReport.Text = "Báo cáo";
+            btnViewReport.UseVisualStyleBackColor = true;
+            btnViewReport.Click += btnViewReport_Click;
+            // 
+            // btnStatisticsForm
+            // 
+            btnStatisticsForm.Location = new Point(47, 318);
+            btnStatisticsForm.Name = "btnStatisticsForm";
+            btnStatisticsForm.Size = new Size(185, 29);
+            btnStatisticsForm.TabIndex = 8;
+            btnStatisticsForm.Text = "Thống kê";
+            btnStatisticsForm.UseVisualStyleBackColor = true;
+            btnStatisticsForm.Click += btnStatisticsForm_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 475);
+            Controls.Add(btnStatisticsForm);
+            Controls.Add(btnViewReport);
             Controls.Add(btnSchedule);
             Controls.Add(btnManageTourOrder);
             Controls.Add(btnManageCustomer);
@@ -136,5 +160,7 @@
         private Button btnManageCustomer;
         private Button btnManageTourOrder;
         private Button btnSchedule;
+        private Button btnViewReport;
+        private Button btnStatisticsForm;
     }
 }

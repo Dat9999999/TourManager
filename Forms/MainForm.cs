@@ -2,6 +2,7 @@
 using TourManagerment.Forms.Authentication;
 using TourManagerment.Forms.Booking;
 using TourManagerment.Forms.CustomerManagement;
+using TourManagerment.Forms.Report;
 using TourManagerment.Forms.ScheduleManagement;
 using TourManagerment.Models;
 
@@ -106,6 +107,19 @@ namespace TourManagerment
         {
             ScheduleForm f = new ScheduleForm();
             f.ShowDialog();
+        }
+
+        private void btnViewReport_Click(object sender, EventArgs e)
+        {
+            ReportForm f = new ReportForm();
+
+            f.ShowDialog();
+        }
+
+        private void btnStatisticsForm_Click(object sender, EventArgs e)
+        {
+            //StatisticsForm f = new StatisticsForm();
+            //f.ShowDialog();
         }
 
         private void lblRole_Click(object sender, EventArgs e)
