@@ -38,7 +38,5 @@ namespace TourManagerment.Models
 
         public ICollection<TourOrder> TourOrders { get; set; } = new List<TourOrder>();
 
-        // Navigation property
-        //public virtual TourGuide TourGuide { get; set; }
     }
 }
