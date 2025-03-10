@@ -1045,7 +1045,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Đà Nẵng - Bà Nà Hills",
                             Pics = "danang.jpg",
                             StartDate = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1058,7 +1057,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Phú Quốc - Biển xanh",
                             Pics = "phuquoc.jpg",
                             StartDate = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Tiêu chuẩn"
                         },
@@ -1071,7 +1069,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Hà Nội - Hạ Long",
                             Pics = "halong.jpg",
                             StartDate = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1084,7 +1081,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Sapa - Fansipan",
                             Pics = "sapa.jpg",
                             StartDate = new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Cao cấp"
                         },
@@ -1097,7 +1093,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Hội An - Mỹ Sơn",
                             Pics = "hoian.jpg",
                             StartDate = new DateTime(2023, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1110,7 +1105,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Nha Trang - Vinpearl",
                             Pics = "nhatrang.jpg",
                             StartDate = new DateTime(2023, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1123,7 +1117,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Cần Thơ - Chợ nổi Cái Răng",
                             Pics = "cantho.jpg",
                             StartDate = new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1136,7 +1129,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Huế - Đại Nội",
                             Pics = "hue.jpg",
                             StartDate = new DateTime(2023, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1149,7 +1141,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Bến Tre - Sông nước miền Tây",
                             Pics = "bentre.jpg",
                             StartDate = new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1162,7 +1153,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Cà Mau - Mũi Cà Mau",
                             Pics = "camau.jpg",
                             StartDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1170,12 +1160,11 @@ namespace TourManagerment.Migrations
                         {
                             Id = 11,
                             Cost = 6000000m,
-                            Duration = 4,
+                            Duration = 1,
                             EndDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Tây Nguyên - Buôn Ma Thuột",
                             Pics = "taynguyen.jpg",
                             StartDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1183,12 +1172,11 @@ namespace TourManagerment.Migrations
                         {
                             Id = 12,
                             Cost = 4500000m,
-                            Duration = 3,
+                            Duration = 2,
                             EndDate = new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Mộc Châu - Cao nguyên xanh",
                             Pics = "mocchau.jpg",
                             StartDate = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1197,11 +1185,10 @@ namespace TourManagerment.Migrations
                             Id = 13,
                             Cost = 3200000m,
                             Duration = 2,
-                            EndDate = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Vũng Tàu - Biển đẹp",
                             Pics = "vungtau.jpg",
-                            StartDate = new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
+                            StartDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1210,11 +1197,10 @@ namespace TourManagerment.Migrations
                             Id = 14,
                             Cost = 7000000m,
                             Duration = 5,
-                            EndDate = new DateTime(2024, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Hà Giang - Cao nguyên đá",
                             Pics = "hagiang.jpg",
-                            StartDate = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
+                            StartDate = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TransportationMethod = "Xe khách",
                             Type = "Cao cấp"
                         },
@@ -1222,12 +1208,11 @@ namespace TourManagerment.Migrations
                         {
                             Id = 15,
                             Cost = 4800000m,
-                            Duration = 3,
+                            Duration = 5,
                             EndDate = new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Bình Thuận - Mũi Né",
                             Pics = "muine.jpg",
                             StartDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1235,12 +1220,11 @@ namespace TourManagerment.Migrations
                         {
                             Id = 16,
                             Cost = 7500000m,
-                            Duration = 4,
+                            Duration = 6,
                             EndDate = new DateTime(2024, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tour Quảng Bình - Phong Nha Kẻ Bàng",
                             Pics = "quangbinh.jpg",
                             StartDate = new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1253,7 +1237,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Lý Sơn - Đảo thiên đường",
                             Pics = "lyson.jpg",
                             StartDate = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Tàu thủy",
                             Type = "Tiết kiệm"
                         },
@@ -1266,7 +1249,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Đồng Tháp - Làng hoa Sa Đéc",
                             Pics = "sa-dec.jpg",
                             StartDate = new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1279,7 +1261,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Ninh Bình - Tràng An",
                             Pics = "ninhbinh.jpg",
                             StartDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Cao cấp"
                         },
@@ -1292,7 +1273,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Côn Đảo - Di tích lịch sử",
                             Pics = "condao.jpg",
                             StartDate = new DateTime(2024, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1305,7 +1285,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Sapa - Núi Fansipan",
                             Pics = "sapa.jpg",
                             StartDate = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Cao cấp"
                         },
@@ -1318,7 +1297,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Huế - Cố đô",
                             Pics = "hue.jpg",
                             StartDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Tiêu chuẩn"
                         },
@@ -1331,7 +1309,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Cà Mau - Mũi Cà Mau",
                             Pics = "camau.jpg",
                             StartDate = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Cao cấp"
                         },
@@ -1344,7 +1321,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Đà Lạt - Thành phố ngàn hoa",
                             Pics = "dalat.jpg",
                             StartDate = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1357,7 +1333,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Nha Trang - Đảo Bình Ba",
                             Pics = "nhatrang.jpg",
                             StartDate = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1370,7 +1345,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Hà Tiên - Biển đảo",
                             Pics = "hatien.jpg",
                             StartDate = new DateTime(2023, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         },
@@ -1383,7 +1357,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Tây Ninh - Núi Bà Đen",
                             Pics = "tayninh.jpg",
                             StartDate = new DateTime(2023, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1396,7 +1369,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Quy Nhơn - Eo Gió",
                             Pics = "quynhon.jpg",
                             StartDate = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 2,
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
                         },
@@ -1409,7 +1381,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Cần Thơ - Chợ nổi Cái Răng",
                             Pics = "cantho.jpg",
                             StartDate = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 1,
                             TransportationMethod = "Xe khách",
                             Type = "Tiết kiệm"
                         },
@@ -1422,7 +1393,6 @@ namespace TourManagerment.Migrations
                             Name = "Tour Bắc Kạn - Hồ Ba Bể",
                             Pics = "babebe.jpg",
                             StartDate = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TourGuideId = 3,
                             TransportationMethod = "Xe khách",
                             Type = "Tiêu chuẩn"
                         });
@@ -2376,11 +2346,9 @@ namespace TourManagerment.Migrations
 
             modelBuilder.Entity("TourManagerment.Models.Tour", b =>
                 {
-                    b.HasOne("TourManagerment.Models.TourGuide", "TourGuide")
+                    b.HasOne("TourManagerment.Models.TourGuide", null)
                         .WithMany("Tours")
                         .HasForeignKey("TourGuideId");
-
-                    b.Navigation("TourGuide");
                 });
 
             modelBuilder.Entity("TourManagerment.Models.TourGuide", b =>

@@ -28,6 +28,7 @@ namespace TourManagerment.Services
         {
             await _context.Tours.AddAsync(tour);
             await _context.SaveChangesAsync();
+            
         }
 
         public async Task UpdateTourAsync(Tour tour)
@@ -36,14 +37,24 @@ namespace TourManagerment.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTourAsync(int id)
+        public async Task<bool> DeleteTourAsync(int id)
         {
             var tour = await _context.Tours.FindAsync(id);
             if (tour != null)
             {
-                _context.Tours.Remove(tour);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Tours.Remove(tour);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
             }
+            return false;
         }
 
         /// <summary>

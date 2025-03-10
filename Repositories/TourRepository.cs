@@ -7,9 +7,6 @@ namespace TourManagerment.Repositories
         public TourRepository()
         {
         }
-
-
-
     }
 }
 

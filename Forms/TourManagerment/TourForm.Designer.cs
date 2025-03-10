@@ -39,22 +39,27 @@
             rb4 = new RadioButton();
             dgvTourList = new DataGridView();
             label3 = new Label();
+            btnAddTour = new Button();
+            btnReload = new Button();
+            grbBudget = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvTourList).BeginInit();
+            grbBudget.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(74, 22);
+            label1.Location = new Point(395, 9);
             label1.Name = "label1";
             label1.Size = new Size(68, 20);
             label1.TabIndex = 1;
             label1.Text = "Loại tour";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(52, 67);
+            label2.Location = new Point(74, 11);
             label2.Name = "label2";
             label2.Size = new Size(90, 20);
             label2.TabIndex = 2;
@@ -62,46 +67,48 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(660, 49);
+            btnSearch.Location = new Point(681, 34);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(94, 29);
             btnSearch.TabIndex = 7;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // cbTourType
             // 
             cbTourType.FormattingEnabled = true;
             cbTourType.Items.AddRange(new object[] { "Cao cấp", "Tiêu chuẩn", "Tiết kiệm" });
-            cbTourType.Location = new Point(148, 21);
+            cbTourType.Location = new Point(395, 34);
             cbTourType.Name = "cbTourType";
-            cbTourType.Size = new Size(188, 28);
+            cbTourType.Size = new Size(270, 28);
             cbTourType.TabIndex = 8;
             // 
             // cbVehicle
             // 
             cbVehicle.FormattingEnabled = true;
-            cbVehicle.Items.AddRange(new object[] { "Xe máy", "Máy bay" });
-            cbVehicle.Location = new Point(148, 66);
+            cbVehicle.Items.AddRange(new object[] { "Xe", "Máy bay" });
+            cbVehicle.Location = new Point(74, 34);
             cbVehicle.Name = "cbVehicle";
-            cbVehicle.Size = new Size(188, 28);
+            cbVehicle.Size = new Size(293, 28);
             cbVehicle.TabIndex = 9;
             // 
             // rb1
             // 
             rb1.AutoSize = true;
-            rb1.Location = new Point(361, 22);
+            rb1.Location = new Point(16, 26);
             rb1.Name = "rb1";
             rb1.Size = new Size(99, 24);
             rb1.TabIndex = 10;
             rb1.TabStop = true;
             rb1.Text = "Dưới $200";
             rb1.UseVisualStyleBackColor = true;
+            rb1.CheckedChanged += rb1_CheckedChanged;
             // 
             // rb2
             // 
             rb2.AutoSize = true;
-            rb2.Location = new Point(361, 65);
+            rb2.Location = new Point(16, 62);
             rb2.Name = "rb2";
             rb2.Size = new Size(100, 24);
             rb2.TabIndex = 11;
@@ -112,7 +119,7 @@
             // rb3
             // 
             rb3.AutoSize = true;
-            rb3.Location = new Point(504, 22);
+            rb3.Location = new Point(161, 26);
             rb3.Name = "rb3";
             rb3.Size = new Size(100, 24);
             rb3.TabIndex = 12;
@@ -123,7 +130,7 @@
             // rb4
             // 
             rb4.AutoSize = true;
-            rb4.Location = new Point(504, 63);
+            rb4.Location = new Point(167, 64);
             rb4.Name = "rb4";
             rb4.Size = new Size(94, 24);
             rb4.TabIndex = 13;
@@ -134,32 +141,65 @@
             // dgvTourList
             // 
             dgvTourList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTourList.Location = new Point(74, 169);
+            dgvTourList.Location = new Point(74, 183);
             dgvTourList.Name = "dgvTourList";
             dgvTourList.RowHeadersWidth = 51;
             dgvTourList.Size = new Size(701, 225);
             dgvTourList.TabIndex = 14;
+            dgvTourList.CellContentClick += dgvTourList_CellContentClick;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(74, 134);
+            label3.Location = new Point(74, 150);
             label3.Name = "label3";
             label3.Size = new Size(111, 20);
             label3.TabIndex = 15;
             label3.Text = "Danh sách tour:";
+            // 
+            // btnAddTour
+            // 
+            btnAddTour.Location = new Point(681, 414);
+            btnAddTour.Name = "btnAddTour";
+            btnAddTour.Size = new Size(94, 29);
+            btnAddTour.TabIndex = 16;
+            btnAddTour.Text = "Thêm";
+            btnAddTour.UseVisualStyleBackColor = true;
+            btnAddTour.Click += btnAddTour_Click;
+            // 
+            // btnReload
+            // 
+            btnReload.Location = new Point(74, 414);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new Size(111, 29);
+            btnReload.TabIndex = 17;
+            btnReload.Text = "Load lại form";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
+            // 
+            // grbBudget
+            // 
+            grbBudget.Controls.Add(rb1);
+            grbBudget.Controls.Add(rb2);
+            grbBudget.Controls.Add(rb3);
+            grbBudget.Controls.Add(rb4);
+            grbBudget.Location = new Point(395, 68);
+            grbBudget.Name = "grbBudget";
+            grbBudget.Size = new Size(280, 92);
+            grbBudget.TabIndex = 18;
+            grbBudget.TabStop = false;
+            grbBudget.Text = "Ngân sách";
             // 
             // TourForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 483);
+            Controls.Add(grbBudget);
+            Controls.Add(btnReload);
+            Controls.Add(btnAddTour);
             Controls.Add(label3);
             Controls.Add(dgvTourList);
-            Controls.Add(rb4);
-            Controls.Add(rb3);
-            Controls.Add(rb2);
-            Controls.Add(rb1);
             Controls.Add(cbVehicle);
             Controls.Add(cbTourType);
             Controls.Add(btnSearch);
@@ -169,6 +209,8 @@
             Text = "TourForm";
             Load += TourForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTourList).EndInit();
+            grbBudget.ResumeLayout(false);
+            grbBudget.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,5 +233,8 @@
         private RadioButton rb4;
         private DataGridView dgvTourList;
         private Label label3;
+        private Button btnAddTour;
+        private Button btnReload;
+        private GroupBox grbBudget;
     }
 }
