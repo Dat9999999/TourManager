@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAdd = new Button();
+            btnEdit = new Button();
             cbTransportMethod = new ComboBox();
             nudDuration = new NumericUpDown();
             cbType = new ComboBox();
@@ -45,18 +45,20 @@
             ((System.ComponentModel.ISupportInitialize)nudCost).BeginInit();
             SuspendLayout();
             // 
-            // btnAdd
+            // btnEdit
             // 
-            btnAdd.Location = new Point(369, 372);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(94, 29);
-            btnAdd.TabIndex = 25;
-            btnAdd.Text = "Sửa";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnEdit.Location = new Point(369, 372);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(94, 29);
+            btnEdit.TabIndex = 25;
+            btnEdit.Text = "Sửa";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // cbTransportMethod
             // 
             cbTransportMethod.FormattingEnabled = true;
+            cbTransportMethod.Items.AddRange(new object[] { "Xe", "Máy Bay" });
             cbTransportMethod.Location = new Point(265, 311);
             cbTransportMethod.Name = "cbTransportMethod";
             cbTransportMethod.Size = new Size(424, 28);
@@ -72,6 +74,7 @@
             // cbType
             // 
             cbType.FormattingEnabled = true;
+            cbType.Items.AddRange(new object[] { "Cao cấp", "Tiêu chuẩn", "Tiết kiệm" });
             cbType.Location = new Point(265, 205);
             cbType.Name = "cbType";
             cbType.Size = new Size(424, 28);
@@ -157,7 +160,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnAdd);
+            Controls.Add(btnEdit);
             Controls.Add(cbTransportMethod);
             Controls.Add(nudDuration);
             Controls.Add(cbType);
@@ -172,6 +175,7 @@
             Controls.Add(label1);
             Name = "EditTourForm";
             Text = "EditTourForm";
+            Load += EditTourForm_Load;
             ((System.ComponentModel.ISupportInitialize)nudDuration).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudCost).EndInit();
             ResumeLayout(false);
@@ -180,7 +184,7 @@
 
         #endregion
 
-        private Button btnAdd;
+        private Button btnEdit;
         private ComboBox cbTransportMethod;
         private NumericUpDown nudDuration;
         private ComboBox cbType;
