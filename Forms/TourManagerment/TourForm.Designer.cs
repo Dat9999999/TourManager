@@ -39,6 +39,8 @@
             rb4 = new RadioButton();
             dgvTourList = new DataGridView();
             label3 = new Label();
+            btnAddTour = new Button();
+            btnReload = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTourList).BeginInit();
             SuspendLayout();
             // 
@@ -139,6 +141,7 @@
             dgvTourList.RowHeadersWidth = 51;
             dgvTourList.Size = new Size(701, 225);
             dgvTourList.TabIndex = 14;
+            dgvTourList.CellContentClick += dgvTourList_CellContentClick;
             // 
             // label3
             // 
@@ -149,11 +152,33 @@
             label3.TabIndex = 15;
             label3.Text = "Danh sách tour:";
             // 
+            // btnAddTour
+            // 
+            btnAddTour.Location = new Point(660, 125);
+            btnAddTour.Name = "btnAddTour";
+            btnAddTour.Size = new Size(94, 29);
+            btnAddTour.TabIndex = 16;
+            btnAddTour.Text = "Thêm";
+            btnAddTour.UseVisualStyleBackColor = true;
+            btnAddTour.Click += btnAddTour_Click;
+            // 
+            // btnReload
+            // 
+            btnReload.Location = new Point(74, 414);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new Size(111, 29);
+            btnReload.TabIndex = 17;
+            btnReload.Text = "Load lại form";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
+            // 
             // TourForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 483);
+            Controls.Add(btnReload);
+            Controls.Add(btnAddTour);
             Controls.Add(label3);
             Controls.Add(dgvTourList);
             Controls.Add(rb4);
@@ -191,5 +216,7 @@
         private RadioButton rb4;
         private DataGridView dgvTourList;
         private Label label3;
+        private Button btnAddTour;
+        private Button btnReload;
     }
 }

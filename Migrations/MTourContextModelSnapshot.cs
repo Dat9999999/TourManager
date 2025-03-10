@@ -1047,6 +1047,354 @@ namespace TourManagerment.Migrations
                             StartDate = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TransportationMethod = "Máy bay",
                             Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cost = 7000000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Phú Quốc - Biển xanh",
+                            Pics = "phuquoc.jpg",
+                            StartDate = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cost = 3000000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hà Nội - Hạ Long",
+                            Pics = "halong.jpg",
+                            StartDate = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cost = 6500000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Sapa - Fansipan",
+                            Pics = "sapa.jpg",
+                            StartDate = new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cost = 4000000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hội An - Mỹ Sơn",
+                            Pics = "hoian.jpg",
+                            StartDate = new DateTime(2023, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Cost = 7500000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Nha Trang - Vinpearl",
+                            Pics = "nhatrang.jpg",
+                            StartDate = new DateTime(2023, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Cost = 3500000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Cần Thơ - Chợ nổi Cái Răng",
+                            Pics = "cantho.jpg",
+                            StartDate = new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Cost = 4200000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Huế - Đại Nội",
+                            Pics = "hue.jpg",
+                            StartDate = new DateTime(2023, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Cost = 2800000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Bến Tre - Sông nước miền Tây",
+                            Pics = "bentre.jpg",
+                            StartDate = new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Cost = 8000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Cà Mau - Mũi Cà Mau",
+                            Pics = "camau.jpg",
+                            StartDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Cost = 6000000m,
+                            Duration = 1,
+                            EndDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Tây Nguyên - Buôn Ma Thuột",
+                            Pics = "taynguyen.jpg",
+                            StartDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Cost = 4500000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Mộc Châu - Cao nguyên xanh",
+                            Pics = "mocchau.jpg",
+                            StartDate = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Cost = 3200000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Vũng Tàu - Biển đẹp",
+                            Pics = "vungtau.jpg",
+                            StartDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Cost = 7000000m,
+                            Duration = 5,
+                            EndDate = new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hà Giang - Cao nguyên đá",
+                            Pics = "hagiang.jpg",
+                            StartDate = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Cost = 4800000m,
+                            Duration = 5,
+                            EndDate = new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Bình Thuận - Mũi Né",
+                            Pics = "muine.jpg",
+                            StartDate = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Cost = 7500000m,
+                            Duration = 6,
+                            EndDate = new DateTime(2024, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Quảng Bình - Phong Nha Kẻ Bàng",
+                            Pics = "quangbinh.jpg",
+                            StartDate = new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Cost = 4000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Lý Sơn - Đảo thiên đường",
+                            Pics = "lyson.jpg",
+                            StartDate = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Tàu thủy",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Cost = 3500000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Đồng Tháp - Làng hoa Sa Đéc",
+                            Pics = "sa-dec.jpg",
+                            StartDate = new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Cost = 5200000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Ninh Bình - Tràng An",
+                            Pics = "ninhbinh.jpg",
+                            StartDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Cost = 8500000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2024, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Côn Đảo - Di tích lịch sử",
+                            Pics = "condao.jpg",
+                            StartDate = new DateTime(2024, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Cost = 6500000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2024, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Sapa - Núi Fansipan",
+                            Pics = "sapa.jpg",
+                            StartDate = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Cost = 5000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Huế - Cố đô",
+                            Pics = "hue.jpg",
+                            StartDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Cost = 7000000m,
+                            Duration = 5,
+                            EndDate = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Cà Mau - Mũi Cà Mau",
+                            Pics = "camau.jpg",
+                            StartDate = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Cost = 4000000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Đà Lạt - Thành phố ngàn hoa",
+                            Pics = "dalat.jpg",
+                            StartDate = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Cost = 7500000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Nha Trang - Đảo Bình Ba",
+                            Pics = "nhatrang.jpg",
+                            StartDate = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Cost = 4800000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Hà Tiên - Biển đảo",
+                            Pics = "hatien.jpg",
+                            StartDate = new DateTime(2023, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Cost = 3000000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Tây Ninh - Núi Bà Đen",
+                            Pics = "tayninh.jpg",
+                            StartDate = new DateTime(2023, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Cost = 6800000m,
+                            Duration = 4,
+                            EndDate = new DateTime(2023, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Quy Nhơn - Eo Gió",
+                            Pics = "quynhon.jpg",
+                            StartDate = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Máy bay",
+                            Type = "Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Cost = 3500000m,
+                            Duration = 2,
+                            EndDate = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Cần Thơ - Chợ nổi Cái Răng",
+                            Pics = "cantho.jpg",
+                            StartDate = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiết kiệm"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Cost = 4200000m,
+                            Duration = 3,
+                            EndDate = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tour Bắc Kạn - Hồ Ba Bể",
+                            Pics = "babebe.jpg",
+                            StartDate = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TransportationMethod = "Xe khách",
+                            Type = "Tiêu chuẩn"
                         });
                 });
 
@@ -1998,7 +2346,7 @@ namespace TourManagerment.Migrations
 
             modelBuilder.Entity("TourManagerment.Models.Tour", b =>
                 {
-                    b.HasOne("TourManagerment.Models.TourGuide", "TourGuide")
+                    b.HasOne("TourManagerment.Models.TourGuide", null)
                         .WithMany("Tours")
                         .HasForeignKey("TourGuideId");
                 });

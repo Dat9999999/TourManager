@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TourManagerment.Migrations
 {
     /// <inheritdoc />
-    public partial class initDB : Migration
+    public partial class RemoveTourGuideFromTour : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,8 +78,8 @@ namespace TourManagerment.Migrations
                     Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Pics = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TourGuideId = table.Column<int>(type: "int", nullable: true),
-                    TransportationMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    TransportationMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TourGuideId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -196,6 +196,43 @@ namespace TourManagerment.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Tours",
+                columns: new[] { "Id", "Cost", "Duration", "EndDate", "Name", "Pics", "StartDate", "TourGuideId", "TransportationMethod", "Type" },
+                values: new object[,]
+                {
+                    { 1, 5000000m, 3, new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đà Nẵng - Bà Nà Hills", "danang.jpg", new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 2, 7000000m, 4, new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Phú Quốc - Biển xanh", "phuquoc.jpg", new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Tiêu chuẩn" },
+                    { 3, 3000000m, 2, new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Nội - Hạ Long", "halong.jpg", new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 4, 6500000m, 3, new DateTime(2023, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Sapa - Fansipan", "sapa.jpg", new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Cao cấp" },
+                    { 5, 4000000m, 2, new DateTime(2023, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hội An - Mỹ Sơn", "hoian.jpg", new DateTime(2023, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 6, 7500000m, 3, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Nha Trang - Vinpearl", "nhatrang.jpg", new DateTime(2023, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 7, 3500000m, 2, new DateTime(2023, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cần Thơ - Chợ nổi Cái Răng", "cantho.jpg", new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 8, 4200000m, 2, new DateTime(2023, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Huế - Đại Nội", "hue.jpg", new DateTime(2023, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 9, 2800000m, 3, new DateTime(2023, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bến Tre - Sông nước miền Tây", "bentre.jpg", new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 10, 8000000m, 3, new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cà Mau - Mũi Cà Mau", "camau.jpg", new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 11, 6000000m, 1, new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Tây Nguyên - Buôn Ma Thuột", "taynguyen.jpg", new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 12, 4500000m, 2, new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Mộc Châu - Cao nguyên xanh", "mocchau.jpg", new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 13, 3200000m, 2, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Vũng Tàu - Biển đẹp", "vungtau.jpg", new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 14, 7000000m, 5, new DateTime(2024, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Giang - Cao nguyên đá", "hagiang.jpg", new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Cao cấp" },
+                    { 15, 4800000m, 5, new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bình Thuận - Mũi Né", "muine.jpg", new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 16, 7500000m, 6, new DateTime(2024, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Quảng Bình - Phong Nha Kẻ Bàng", "quangbinh.jpg", new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 17, 4000000m, 3, new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Lý Sơn - Đảo thiên đường", "lyson.jpg", new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Tàu thủy", "Tiết kiệm" },
+                    { 18, 3500000m, 2, new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đồng Tháp - Làng hoa Sa Đéc", "sa-dec.jpg", new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 19, 5200000m, 2, new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Ninh Bình - Tràng An", "ninhbinh.jpg", new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Cao cấp" },
+                    { 20, 8500000m, 3, new DateTime(2024, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Côn Đảo - Di tích lịch sử", "condao.jpg", new DateTime(2024, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 21, 6500000m, 4, new DateTime(2024, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Sapa - Núi Fansipan", "sapa.jpg", new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Cao cấp" },
+                    { 22, 5000000m, 3, new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Huế - Cố đô", "hue.jpg", new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Tiêu chuẩn" },
+                    { 23, 7000000m, 5, new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cà Mau - Mũi Cà Mau", "camau.jpg", new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Cao cấp" },
+                    { 24, 4000000m, 3, new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đà Lạt - Thành phố ngàn hoa", "dalat.jpg", new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 25, 7500000m, 4, new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Nha Trang - Đảo Bình Ba", "nhatrang.jpg", new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 26, 4800000m, 3, new DateTime(2023, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Tiên - Biển đảo", "hatien.jpg", new DateTime(2023, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" },
+                    { 27, 3000000m, 2, new DateTime(2023, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Tây Ninh - Núi Bà Đen", "tayninh.jpg", new DateTime(2023, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 28, 6800000m, 4, new DateTime(2023, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Quy Nhơn - Eo Gió", "quynhon.jpg", new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Máy bay", "Cao cấp" },
+                    { 29, 3500000m, 2, new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cần Thơ - Chợ nổi Cái Răng", "cantho.jpg", new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiết kiệm" },
+                    { 30, 4200000m, 3, new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bắc Kạn - Hồ Ba Bể", "babebe.jpg", new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Xe khách", "Tiêu chuẩn" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Password", "Role", "UserName" },
                 values: new object[,]
@@ -213,43 +250,6 @@ namespace TourManagerment.Migrations
                     { 1, new DateTime(1985, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nguyễn Văn A", "0987654321", 1 },
                     { 2, new DateTime(1990, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Trần Thị B", "0976543210", 2 },
                     { 3, new DateTime(1995, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lê Văn C", "0965432109", 3 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Tours",
-                columns: new[] { "Id", "Cost", "Duration", "EndDate", "Name", "Pics", "StartDate", "TourGuideId", "TransportationMethod", "Type" },
-                values: new object[,]
-                {
-                    { 1, 5000000m, 3, new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đà Nẵng - Bà Nà Hills", "danang.jpg", new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Máy bay", "Cao cấp" },
-                    { 2, 7000000m, 4, new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Phú Quốc - Biển xanh", "phuquoc.jpg", new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Tiêu chuẩn" },
-                    { 3, 3000000m, 2, new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Nội - Hạ Long", "halong.jpg", new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiết kiệm" },
-                    { 4, 6500000m, 3, new DateTime(2023, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Sapa - Fansipan", "sapa.jpg", new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Cao cấp" },
-                    { 5, 4000000m, 2, new DateTime(2023, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hội An - Mỹ Sơn", "hoian.jpg", new DateTime(2023, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Xe khách", "Tiêu chuẩn" },
-                    { 6, 7500000m, 3, new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Nha Trang - Vinpearl", "nhatrang.jpg", new DateTime(2023, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Máy bay", "Cao cấp" },
-                    { 7, 3500000m, 2, new DateTime(2023, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cần Thơ - Chợ nổi Cái Răng", "cantho.jpg", new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Tiết kiệm" },
-                    { 8, 4200000m, 2, new DateTime(2023, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Huế - Đại Nội", "hue.jpg", new DateTime(2023, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Xe khách", "Tiêu chuẩn" },
-                    { 9, 2800000m, 3, new DateTime(2023, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bến Tre - Sông nước miền Tây", "bentre.jpg", new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiết kiệm" },
-                    { 10, 8000000m, 3, new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cà Mau - Mũi Cà Mau", "camau.jpg", new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Máy bay", "Cao cấp" },
-                    { 11, 6000000m, 4, new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Tây Nguyên - Buôn Ma Thuột", "taynguyen.jpg", new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Cao cấp" },
-                    { 12, 4500000m, 3, new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Mộc Châu - Cao nguyên xanh", "mocchau.jpg", new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiêu chuẩn" },
-                    { 13, 3200000m, 2, new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Vũng Tàu - Biển đẹp", "vungtau.jpg", new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Tiết kiệm" },
-                    { 14, 7000000m, 5, new DateTime(2024, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Giang - Cao nguyên đá", "hagiang.jpg", new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Xe khách", "Cao cấp" },
-                    { 15, 4800000m, 3, new DateTime(2024, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bình Thuận - Mũi Né", "muine.jpg", new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiêu chuẩn" },
-                    { 16, 7500000m, 4, new DateTime(2024, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Quảng Bình - Phong Nha Kẻ Bàng", "quangbinh.jpg", new DateTime(2024, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Máy bay", "Cao cấp" },
-                    { 17, 4000000m, 3, new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Lý Sơn - Đảo thiên đường", "lyson.jpg", new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Tàu thủy", "Tiết kiệm" },
-                    { 18, 3500000m, 2, new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đồng Tháp - Làng hoa Sa Đéc", "sa-dec.jpg", new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiêu chuẩn" },
-                    { 19, 5200000m, 2, new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Ninh Bình - Tràng An", "ninhbinh.jpg", new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Cao cấp" },
-                    { 20, 8500000m, 3, new DateTime(2024, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Côn Đảo - Di tích lịch sử", "condao.jpg", new DateTime(2024, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Cao cấp" },
-                    { 21, 6500000m, 4, new DateTime(2024, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Sapa - Núi Fansipan", "sapa.jpg", new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Cao cấp" },
-                    { 22, 5000000m, 3, new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Huế - Cố đô", "hue.jpg", new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Tiêu chuẩn" },
-                    { 23, 7000000m, 5, new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cà Mau - Mũi Cà Mau", "camau.jpg", new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Cao cấp" },
-                    { 24, 4000000m, 3, new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Đà Lạt - Thành phố ngàn hoa", "dalat.jpg", new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiết kiệm" },
-                    { 25, 7500000m, 4, new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Nha Trang - Đảo Bình Ba", "nhatrang.jpg", new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Cao cấp" },
-                    { 26, 4800000m, 3, new DateTime(2023, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Hà Tiên - Biển đảo", "hatien.jpg", new DateTime(2023, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Tiêu chuẩn" },
-                    { 27, 3000000m, 2, new DateTime(2023, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Tây Ninh - Núi Bà Đen", "tayninh.jpg", new DateTime(2023, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiết kiệm" },
-                    { 28, 6800000m, 4, new DateTime(2023, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Quy Nhơn - Eo Gió", "quynhon.jpg", new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Máy bay", "Cao cấp" },
-                    { 29, 3500000m, 2, new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Cần Thơ - Chợ nổi Cái Răng", "cantho.jpg", new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Xe khách", "Tiết kiệm" },
-                    { 30, 4200000m, 3, new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour Bắc Kạn - Hồ Ba Bể", "babebe.jpg", new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Xe khách", "Tiêu chuẩn" }
                 });
 
             migrationBuilder.InsertData(
