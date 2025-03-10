@@ -34,6 +34,7 @@
             btnReport = new Button();
             btnManageCustomer = new Button();
             btnManageTourOrder = new Button();
+            btnSchedule = new Button();
             SuspendLayout();
             // 
             // btnManageTour
@@ -96,11 +97,22 @@
             btnManageTourOrder.UseVisualStyleBackColor = true;
             btnManageTourOrder.Click += btnManageTourOrder_Click;
             // 
+            // btnSchedule
+            // 
+            btnSchedule.Location = new Point(47, 227);
+            btnSchedule.Name = "btnSchedule";
+            btnSchedule.Size = new Size(185, 29);
+            btnSchedule.TabIndex = 6;
+            btnSchedule.Text = "Lịch trình và thanh toán";
+            btnSchedule.UseVisualStyleBackColor = true;
+            btnSchedule.Click += btnSchedule_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSchedule);
             Controls.Add(btnManageTourOrder);
             Controls.Add(btnManageCustomer);
             Controls.Add(btnReport);
@@ -123,5 +135,6 @@
         private Button btnReport;
         private Button btnManageCustomer;
         private Button btnManageTourOrder;
+        private Button btnSchedule;
     }
 }

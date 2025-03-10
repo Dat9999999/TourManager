@@ -2,14 +2,12 @@
 
 namespace TourManagerment.Repositories
 {
-    public class TourRepository : GenericRepository<Tour>
+    public class InvoiceRepository : GenericRepository<Invoice>
     {
-        public TourRepository()
+        public InvoiceRepository()
         {
         }
 
 
-
     }
 }
-

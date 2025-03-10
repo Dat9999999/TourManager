@@ -35,10 +35,12 @@
             // 
             // dataGridViewTourOrders
             // 
+            dataGridViewTourOrders.AllowUserToOrderColumns = true;
             dataGridViewTourOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTourOrders.Dock = DockStyle.Top;
             dataGridViewTourOrders.Location = new Point(0, 0);
             dataGridViewTourOrders.Name = "dataGridViewTourOrders";
+            dataGridViewTourOrders.ReadOnly = true;
             dataGridViewTourOrders.RowHeadersWidth = 51;
             dataGridViewTourOrders.Size = new Size(800, 283);
             dataGridViewTourOrders.TabIndex = 0;

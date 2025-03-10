@@ -35,10 +35,12 @@
             // 
             // dataGridViewCustomers
             // 
+            dataGridViewCustomers.AllowUserToOrderColumns = true;
             dataGridViewCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCustomers.Dock = DockStyle.Top;
             dataGridViewCustomers.Location = new Point(0, 0);
             dataGridViewCustomers.Name = "dataGridViewCustomers";
+            dataGridViewCustomers.ReadOnly = true;
             dataGridViewCustomers.RowHeadersWidth = 51;
             dataGridViewCustomers.Size = new Size(800, 188);
             dataGridViewCustomers.TabIndex = 0;
