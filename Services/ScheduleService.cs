@@ -18,6 +18,76 @@ namespace TourManagerment.Services
             _tourOrderRepository = new TourOrderRepository();
         }
 
+        public async Task<List<ScheduleDTO>> SearchSchedulesAsync(string keyword)
+        {
+            try
+            {
+                var tourOrders = await _tourOrderRepository.GetAllAsync(); // Lấy tất cả các tourOrder
+                var schedules = new List<ScheduleDTO>();
+
+                bool isNumeric = int.TryParse(keyword, out int numericKeyword); // Kiểm tra xem keyword có phải là số không
+
+                foreach (var tourOrder in tourOrders)
+                {
+                    // Kiểm tra nếu từ khóa là số và so sánh với ID
+                    if (isNumeric)
+                    {
+                        // Kiểm tra nếu ID của TourOrder, Customer, hoặc TourOrderId có khớp với numericKeyword
+                        if (tourOrder.Id == numericKeyword ||
+                            tourOrder.CustomerID == numericKeyword ||
+                            tourOrder.TourID == numericKeyword)
+                        {
+                            var customer = tourOrder.CustomerID.HasValue
+                                ? await _customerRepository.GetByIdAsync(tourOrder.CustomerID.Value)
+                                : null;
+
+                            var tour = tourOrder.TourID.HasValue
+                                ? await _tourRepository.GetByIdAsync(tourOrder.TourID.Value)
+                                : null;
+
+                            var invoice = await _invoiceRepository.FindAsync(i => i.TourOrderID == tourOrder.Id);
+
+                            var schedule = new ScheduleDTO(customer, tourOrder, tour, invoice.FirstOrDefault());
+                            schedules.Add(schedule);
+                        }
+                    }
+                    else
+                    {
+                        // Tìm kiếm bình thường theo các trường trong ScheduleDTO nếu keyword không phải là số
+                        var customer = tourOrder.CustomerID.HasValue
+                            ? await _customerRepository.GetByIdAsync(tourOrder.CustomerID.Value)
+                            : null;
+
+                        var tour = tourOrder.TourID.HasValue
+                            ? await _tourRepository.GetByIdAsync(tourOrder.TourID.Value)
+                            : null;
+
+                        var invoice = await _invoiceRepository.FindAsync(i => i.TourOrderID == tourOrder.Id);
+
+                        var schedule = new ScheduleDTO(customer, tourOrder, tour, invoice.FirstOrDefault());
+
+                        // Kiểm tra nếu từ khóa (keyword) có xuất hiện trong các trường của ScheduleDTO
+                        // Chỉ so sánh khi các trường không phải là null
+                        if ((schedule.CustomerInfo?.ToLower()?.Contains(keyword.ToLower()) ?? false) ||
+                            (schedule.TourInfo?.ToLower()?.Contains(keyword.ToLower()) ?? false) ||
+                            (schedule.TourStatus?.ToLower()?.Contains(keyword.ToLower()) ?? false) ||
+                            (schedule.TimeStatus?.ToLower()?.Contains(keyword.ToLower()) ?? false) ||
+                            (schedule.TourOrderInfo?.ToLower()?.Contains(keyword.ToLower()) ?? false) ||
+                            (schedule.InvoiceInfo?.ToLower()?.Contains(keyword.ToLower()) ?? false))
+                        {
+                            schedules.Add(schedule);
+                        }
+                    }
+                }
+
+                return schedules;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi tìm kiếm lịch trình: " + ex.Message, ex);
+            }
+        }
+
         public async Task<List<ScheduleDTO>> GetAllSchedulesAsync()
         {
             try

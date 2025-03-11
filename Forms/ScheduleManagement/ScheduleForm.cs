@@ -1,4 +1,5 @@
-﻿using TourManagerment.Services;
+﻿using TourManagerment.DTO;
+using TourManagerment.Services;
 
 namespace TourManagerment.Forms.ScheduleManagement
 {
@@ -14,17 +15,74 @@ namespace TourManagerment.Forms.ScheduleManagement
 
         private async void ScheduleForm_Load(object sender, EventArgs e)
         {
+            // Thêm các giá trị vào cboTourStatus
+            cboTourStatus.Items.Add("Tất cả");
+            cboTourStatus.Items.Add("Chưa diễn ra");
+            cboTourStatus.Items.Add("Đang diễn ra");
+            cboTourStatus.Items.Add("Đã diễn ra");
+
+            // Thêm các giá trị vào cboInvoiceInfo
+            cboInvoiceInfo.Items.Add("Tất cả");
+            cboInvoiceInfo.Items.Add("Chưa thanh toán");
+            cboInvoiceInfo.Items.Add("Đã thanh toán");
+
+            // Chọn mặc định (nếu cần)
+            cboTourStatus.SelectedIndex = 0; // Ví dụ, mặc định là "Chưa bắt đầu"
+            cboInvoiceInfo.SelectedIndex = 0; // Ví dụ, mặc định là "Chưa thanh toán"
+
+            cboTourStatus.SelectedIndexChanged += cboTourStatus_SelectedIndexChanged;
+            cboInvoiceInfo.SelectedIndexChanged += cboInvoiceInfo_SelectedIndexChanged;
+
             await LoadSchedulesAsync();
             AddActionButtons();
             SetupDataGridView();
         }
+
+
+        void LoadDataGridView(List<ScheduleDTO> schedules)
+        {
+            // Lấy giá trị được chọn từ ComboBox
+            string selectedTourStatus = cboTourStatus.SelectedItem?.ToString();
+            string selectedInvoiceInfo = cboInvoiceInfo.SelectedItem?.ToString();
+
+            // Lọc theo TourStatus
+            if (!string.IsNullOrEmpty(selectedTourStatus) && selectedTourStatus.Equals("Chưa diễn ra"))
+            {
+                schedules = schedules.Where(s => s.TourStatus == selectedTourStatus).ToList();
+            }
+            else if (!string.IsNullOrEmpty(selectedTourStatus) && selectedTourStatus.Equals("Đang diễn ra"))
+            {
+                schedules = schedules.Where(s => s.TourStatus == selectedTourStatus).ToList();
+
+            }
+            else if (!string.IsNullOrEmpty(selectedTourStatus) && selectedTourStatus.Equals("Đã diễn ra"))
+            {
+                schedules = schedules.Where(s => s.TourStatus == selectedTourStatus).ToList();
+            }
+
+            // Lọc theo InvoiceInfo
+            if (!string.IsNullOrEmpty(selectedInvoiceInfo) && selectedInvoiceInfo.Equals("Chưa thanh toán"))
+            {
+                schedules = schedules.Where(s => s.InvoiceInfo == selectedInvoiceInfo).ToList();
+            }
+            else if (!string.IsNullOrEmpty(selectedInvoiceInfo) && selectedInvoiceInfo.Equals("Đã thanh toán"))
+            {
+                string str = "Chưa thanh toán";
+                schedules = schedules.Where(s => s.InvoiceInfo != str).ToList();
+            }
+
+            // Cập nhật lại DataGridView
+            dataGridViewSchedules.DataSource = schedules;
+        }
+
+
 
         private async Task LoadSchedulesAsync()
         {
             try
             {
                 var schedules = await _scheduleService.GetAllSchedulesAsync();
-                dataGridViewSchedules.DataSource = schedules;
+                LoadDataGridView(schedules);
             }
             catch (Exception ex)
             {
@@ -83,6 +141,21 @@ namespace TourManagerment.Forms.ScheduleManagement
             // Căn giữa header
             dataGridViewSchedules.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            // Đổi tên các cột trong DataGridView
+            if (dataGridViewSchedules.Columns["CustomerInfo"] != null)
+                dataGridViewSchedules.Columns["CustomerInfo"].HeaderText = "Khách hàng";
+            if (dataGridViewSchedules.Columns["TourInfo"] != null)
+                dataGridViewSchedules.Columns["TourInfo"].HeaderText = "Tour";
+            if (dataGridViewSchedules.Columns["TourStatus"] != null)
+                dataGridViewSchedules.Columns["TourStatus"].HeaderText = "Trạng thái tour";
+            if (dataGridViewSchedules.Columns["TimeStatus"] != null)
+                dataGridViewSchedules.Columns["TimeStatus"].HeaderText = "Thời gian";
+            if (dataGridViewSchedules.Columns["TourOrderInfo"] != null)
+                dataGridViewSchedules.Columns["TourOrderInfo"].HeaderText = "Thông tin đơn đặt";
+            if (dataGridViewSchedules.Columns["InvoiceInfo"] != null)
+                dataGridViewSchedules.Columns["InvoiceInfo"].HeaderText = "Hóa đơn";
+
+
             // Căn trái nội dung (trừ cột nút)
             foreach (DataGridViewColumn col in dataGridViewSchedules.Columns)
             {
@@ -130,5 +203,54 @@ namespace TourManagerment.Forms.ScheduleManagement
             }
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();  // Lấy nội dung ô tìm kiếm
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                // Nếu không có từ khóa tìm kiếm, tải tất cả lịch trình
+                await LoadSchedulesAsync();
+            }
+            else
+            {
+                // Tìm kiếm theo từ khóa
+                try
+                {
+                    var schedules = await _scheduleService.SearchSchedulesAsync(keyword);
+                    LoadDataGridView(schedules);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi tìm kiếm lịch trình: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private async void cboTourStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var schedules = await _scheduleService.GetAllSchedulesAsync();
+                LoadDataGridView(schedules);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void cboInvoiceInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var schedules = await _scheduleService.GetAllSchedulesAsync();
+                LoadDataGridView(schedules);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

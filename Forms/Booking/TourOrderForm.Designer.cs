@@ -30,6 +30,10 @@
         {
             dataGridViewTourOrders = new DataGridView();
             btnCreate = new Button();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            cbStatusFilter = new ComboBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTourOrders).BeginInit();
             SuspendLayout();
             // 
@@ -55,11 +59,49 @@
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(348, 353);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(127, 355);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(215, 27);
+            txtSearch.TabIndex = 4;
+            // 
+            // cbStatusFilter
+            // 
+            cbStatusFilter.FormattingEnabled = true;
+            cbStatusFilter.Location = new Point(448, 353);
+            cbStatusFilter.Name = "cbStatusFilter";
+            cbStatusFilter.Size = new Size(151, 28);
+            cbStatusFilter.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(448, 327);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 20);
+            label1.TabIndex = 7;
+            label1.Text = "Trạng thái:";
+            // 
             // TourOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(cbStatusFilter);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(btnCreate);
             Controls.Add(dataGridViewTourOrders);
             Name = "TourOrderForm";
@@ -68,11 +110,16 @@
             Load += TourOrderForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewTourOrders).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewTourOrders;
         private Button btnCreate;
+        private Button btnSearch;
+        private TextBox txtSearch;
+        private ComboBox cbStatusFilter;
+        private Label label1;
     }
 }

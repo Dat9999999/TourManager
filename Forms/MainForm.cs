@@ -118,8 +118,8 @@ namespace TourManagerment
 
         private void btnStatisticsForm_Click(object sender, EventArgs e)
         {
-            //StatisticsForm f = new StatisticsForm();
-            //f.ShowDialog();
+            StatisticsForm f = new StatisticsForm();
+            f.ShowDialog();
         }
 
         private void lblRole_Click(object sender, EventArgs e)

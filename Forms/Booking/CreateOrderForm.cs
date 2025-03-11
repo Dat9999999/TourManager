@@ -1,4 +1,5 @@
-﻿using TourManagerment.Models;
+﻿using TourManagerment.DTO;
+using TourManagerment.Models;
 using TourManagerment.Services;
 
 namespace TourManagerment.Forms.Booking
@@ -26,11 +27,33 @@ namespace TourManagerment.Forms.Booking
 
         private async Task LoadTours()
         {
+            // Lấy danh sách các tour từ dịch vụ
             var tours = await _tourService.GetAllToursAsync();
-            comboBoxTours.DataSource = tours;
-            comboBoxTours.DisplayMember = "Name";
-            comboBoxTours.ValueMember = "Id";
+
+            // Chuyển các tour thành TourDTO và lọc những tour có StartDate >= DateTime.Now
+            var upcomingTours = tours
+                .Where(t => t.StartDate >= DateTime.Now)
+                .Select(t => new TourDTO
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    Duration = t.Duration,
+                    StartDate = t.StartDate,
+                    EndDate = t.EndDate,
+                    Type = t.Type,
+                    Cost = t.Cost,
+                    DisplayText = $"{t.Name} (Id: {t.Id}, {t.Duration} ngày, " +
+                                  $"từ {t.StartDate:dd/MM/yyyy} - đến: {t.EndDate:dd/MM/yyyy}, " +
+                                  $"loại: {t.Type}, Phí: {t.Cost:C})"
+                })
+                .ToList();
+
+            // Đặt dữ liệu cho ComboBox
+            comboBoxTours.DataSource = upcomingTours;
+            comboBoxTours.DisplayMember = "DisplayText";  // Hiển thị thông tin chi tiết
+            comboBoxTours.ValueMember = "Id";  // Sử dụng Id làm giá trị
         }
+
 
         private async void txtPhone_TextChanged(object sender, EventArgs e)
         {

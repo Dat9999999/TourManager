@@ -1,4 +1,5 @@
-﻿using TourManagerment.Services;
+﻿using TourManagerment.DTO;
+using TourManagerment.Services;
 
 namespace TourManagerment.Forms.Booking
 {
@@ -14,17 +15,62 @@ namespace TourManagerment.Forms.Booking
 
         private async void TourOrderForm_Load(object sender, EventArgs e)
         {
+            // Khởi tạo ComboBox trạng thái
+
+            cbStatusFilter.Items.Add("Tất cả");
+            cbStatusFilter.Items.Add("Complete");
+            cbStatusFilter.Items.Add("Pending");
+            cbStatusFilter.SelectedItem = "Tất cả"; // Mặc định chọn tất cả
+            cbStatusFilter.SelectedIndexChanged += cbStatusFilter_SelectedIndexChanged;
+
+            // Thêm ComboBox vào form
+            this.Controls.Add(cbStatusFilter);
+
             // Load dữ liệu vào DataGridView
             await LoadTourOrdersAsync();
             AddActionButtons();
             SetupDataGridView();
         }
 
-        private async Task LoadTourOrdersAsync()
+        private async void cbStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedStatus = cbStatusFilter.SelectedItem.ToString();
+            dataGridViewTourOrders.DataSource = await FilterTourOrdersByStatusAsync(selectedStatus);
+        }
+
+        public async Task<List<TourOrderDTO>> FilterTourOrdersByStatusAsync(string status)
         {
             var tourOrders = await _tourOrderService.GetAllTourOrdersAsync();
-            dataGridViewTourOrders.DataSource = tourOrders;
+
+            // Lọc theo trạng thái nếu người dùng chọn
+            if (status != "Tất cả")
+            {
+                tourOrders = tourOrders.Where(to => to.Status.Equals(status, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            // Chuyển đổi TourOrder sang TourOrderDTO
+            return tourOrders.Select(to => new TourOrderDTO
+            {
+                Id = to.Id,
+                CustomerName = to.Customer != null ? to.Customer.Name : "Không có thông tin khách hàng",
+                Phone = to.Customer != null ? to.Customer.Phone : "Không có số điện thoại",
+                TourName = to.Tour != null ? to.Tour.Name : "Không có thông tin tour",
+                Address = to.Customer != null ? to.Customer?.Address : "Không có thông tin địa chỉ",
+                Status = to.Status,
+                CreationTime = to.CreationTime.ToString("dd/MM/yyyy HH:mm"),
+            }).ToList();
+
+
+
         }
+
+
+
+        private async Task LoadTourOrdersAsync()
+        {
+            string selectedStatus = cbStatusFilter.SelectedItem.ToString();
+            dataGridViewTourOrders.DataSource = await FilterTourOrdersByStatusAsync(selectedStatus);
+        }
+
 
         private void AddActionButtons()
         {
@@ -89,6 +135,15 @@ namespace TourManagerment.Forms.Booking
             // Căn giữa header
             dataGridViewTourOrders.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            // Thêm tên cột cho DataGridView
+            dataGridViewTourOrders.Columns["Id"].HeaderText = "Id";
+            dataGridViewTourOrders.Columns["CustomerName"].HeaderText = "Tên";
+            dataGridViewTourOrders.Columns["Phone"].HeaderText = "Số Điện Thoại";
+            dataGridViewTourOrders.Columns["TourName"].HeaderText = "Tên Tour";
+            dataGridViewTourOrders.Columns["Address"].HeaderText = "Địa Chỉ";
+            dataGridViewTourOrders.Columns["Status"].HeaderText = "Trạng Thái";
+            dataGridViewTourOrders.Columns["CreationTime"].HeaderText = "Ngày Tạo";
+
             // Căn trái nội dung (trừ cột chứa nút)
             foreach (DataGridViewColumn col in dataGridViewTourOrders.Columns)
             {
@@ -139,5 +194,34 @@ namespace TourManagerment.Forms.Booking
             f.ShowDialog();
             await LoadTourOrdersAsync();
         }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            string statusFilter = cbStatusFilter.SelectedItem.ToString();
+
+            // Lọc theo trạng thái trước tiên
+            var results = await FilterTourOrdersByStatusAsync(statusFilter);
+
+            // Kiểm tra nếu từ khóa là một số để tìm kiếm theo ID
+            if (int.TryParse(keyword, out int orderId))
+            {
+                // Nếu tìm thấy ID, lọc theo ID
+                results = results.Where(r => r.Id == orderId).ToList();
+            }
+            else if (!string.IsNullOrEmpty(keyword))
+            {
+                // Nếu không phải là số, tìm kiếm theo tên khách hàng hoặc tên tour
+                results = results.Where(r => r.CustomerName.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                                           || r.TourName.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                                           || r.Phone.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                                           || r.Address.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            // Cập nhật lại DataGridView với kết quả tìm kiếm
+            dataGridViewTourOrders.DataSource = results;
+        }
+
+
     }
 }

@@ -30,6 +30,8 @@
         {
             dataGridViewCustomers = new DataGridView();
             btnCreate = new Button();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).BeginInit();
             SuspendLayout();
             // 
@@ -42,7 +44,7 @@
             dataGridViewCustomers.Name = "dataGridViewCustomers";
             dataGridViewCustomers.ReadOnly = true;
             dataGridViewCustomers.RowHeadersWidth = 51;
-            dataGridViewCustomers.Size = new Size(800, 188);
+            dataGridViewCustomers.Size = new Size(800, 278);
             dataGridViewCustomers.TabIndex = 0;
             // 
             // btnCreate
@@ -55,11 +57,30 @@
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(156, 332);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(215, 27);
+            txtSearch.TabIndex = 2;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(377, 330);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 3;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(btnCreate);
             Controls.Add(dataGridViewCustomers);
             Name = "CustomerForm";
@@ -68,11 +89,14 @@
             Load += CustomerForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewCustomers;
         private Button btnCreate;
+        private TextBox txtSearch;
+        private Button btnSearch;
     }
 }

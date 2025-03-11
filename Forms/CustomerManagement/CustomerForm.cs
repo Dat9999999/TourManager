@@ -88,6 +88,21 @@ namespace TourManagerment.Forms.CustomerManagement
             // Căn giữa header
             dataGridViewCustomers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            if (dataGridViewCustomers.Columns["Id"] != null)
+                dataGridViewCustomers.Columns["Id"].HeaderText = "Id";
+            if (dataGridViewCustomers.Columns["Name"] != null)
+                dataGridViewCustomers.Columns["Name"].HeaderText = "Tên";
+            if (dataGridViewCustomers.Columns["Phone"] != null)
+                dataGridViewCustomers.Columns["Phone"].HeaderText = "Số điện thoại";
+            if (dataGridViewCustomers.Columns["Address"] != null)
+                dataGridViewCustomers.Columns["Address"].HeaderText = "Địa chỉ";
+
+            // Ẩn cột TourOrder nếu tồn tại
+            if (dataGridViewCustomers.Columns["TourOrders"] != null)
+            {
+                dataGridViewCustomers.Columns["TourOrders"].Visible = false;
+            }
+
             // Căn trái nội dung của từng cột (trừ cột chứa nút)
             foreach (DataGridViewColumn col in dataGridViewCustomers.Columns)
             {
@@ -138,6 +153,13 @@ namespace TourManagerment.Forms.CustomerManagement
             CreateCustomerForm f = new CreateCustomerForm();
             f.ShowDialog();
             await LoadCustomersAsync();
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            var customers = await _customerService.SearchCustomersAsync(keyword);
+            dataGridViewCustomers.DataSource = customers;
         }
     }
 }

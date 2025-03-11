@@ -12,6 +12,18 @@ namespace TourManagerment.Services
             _customerRepository = new CustomerRepository();
         }
 
+        public async Task<List<Customer>> SearchCustomersAsync(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                return await GetAllCustomersAsync();
+            }
+
+            return await _customerRepository.SearchAsync(keyword);
+        }
+
+
+
         public async Task<List<Customer>> GetAllCustomersAsync()
         {
             return await _customerRepository.GetAllAsync();

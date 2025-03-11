@@ -1,4 +1,5 @@
-﻿using TourManagerment.Models;
+﻿using TourManagerment.DTO;
+using TourManagerment.Models;
 using TourManagerment.Repositories;
 
 namespace TourManagerment.Services
@@ -12,11 +13,16 @@ namespace TourManagerment.Services
             _tourOrderRepository = new TourOrderRepository();
         }
 
+        public async Task<List<TourOrder>> SearchTourOrdersAsync(string keyword)
+        {
+            return await _tourOrderRepository.SearchAsync(keyword);
+        }
+
 
 
         public async Task<List<TourOrder>> GetAllTourOrdersAsync()
         {
-            return await _tourOrderRepository.GetAllAsync();
+            return await _tourOrderRepository.GetAllTourOrdersAsync();
         }
 
         public async Task<TourOrder?> GetTourOrderByIdAsync(int id)
@@ -51,6 +57,9 @@ namespace TourManagerment.Services
         }
 
 
-
+        public async Task<List<TourOrderDTO>> FilterTourOrdersByStatusAsync(string status)
+        {
+            return await _tourOrderRepository.FilterTourOrdersByStatusAsync(status);
+        }
     }
 }
