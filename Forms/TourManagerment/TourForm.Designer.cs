@@ -42,6 +42,7 @@
             btnAddTour = new Button();
             btnReload = new Button();
             grbBudget = new GroupBox();
+            btnAddFromExcel = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTourList).BeginInit();
             grbBudget.SuspendLayout();
             SuspendLayout();
@@ -87,7 +88,7 @@
             // cbVehicle
             // 
             cbVehicle.FormattingEnabled = true;
-            cbVehicle.Items.AddRange(new object[] { "Xe", "Máy bay" });
+            cbVehicle.Items.AddRange(new object[] { "Xe", "Máy bay", "Xe khách", "Tàu hỏa" });
             cbVehicle.Location = new Point(74, 34);
             cbVehicle.Name = "cbVehicle";
             cbVehicle.Size = new Size(293, 28);
@@ -98,10 +99,10 @@
             rb1.AutoSize = true;
             rb1.Location = new Point(16, 26);
             rb1.Name = "rb1";
-            rb1.Size = new Size(99, 24);
+            rb1.Size = new Size(109, 24);
             rb1.TabIndex = 10;
             rb1.TabStop = true;
-            rb1.Text = "Dưới $200";
+            rb1.Text = "Dưới 1 triệu";
             rb1.UseVisualStyleBackColor = true;
             rb1.CheckedChanged += rb1_CheckedChanged;
             // 
@@ -110,10 +111,10 @@
             rb2.AutoSize = true;
             rb2.Location = new Point(16, 62);
             rb2.Name = "rb2";
-            rb2.Size = new Size(100, 24);
+            rb2.Size = new Size(142, 24);
             rb2.TabIndex = 11;
             rb2.TabStop = true;
-            rb2.Text = "$400-$800";
+            rb2.Text = "Từ 5 đến 10 triệu";
             rb2.UseVisualStyleBackColor = true;
             // 
             // rb3
@@ -121,10 +122,10 @@
             rb3.AutoSize = true;
             rb3.Location = new Point(161, 26);
             rb3.Name = "rb3";
-            rb3.Size = new Size(100, 24);
+            rb3.Size = new Size(134, 24);
             rb3.TabIndex = 12;
             rb3.TabStop = true;
-            rb3.Text = "$200-$400";
+            rb3.Text = "Từ 1 đến 5 triệu";
             rb3.UseVisualStyleBackColor = true;
             // 
             // rb4
@@ -132,10 +133,10 @@
             rb4.AutoSize = true;
             rb4.Location = new Point(167, 64);
             rb4.Name = "rb4";
-            rb4.Size = new Size(94, 24);
+            rb4.Size = new Size(112, 24);
             rb4.TabIndex = 13;
             rb4.TabStop = true;
-            rb4.Text = "Trên $800";
+            rb4.Text = "Trên 10 triệu";
             rb4.UseVisualStyleBackColor = true;
             // 
             // dgvTourList
@@ -185,16 +186,27 @@
             grbBudget.Controls.Add(rb4);
             grbBudget.Location = new Point(395, 68);
             grbBudget.Name = "grbBudget";
-            grbBudget.Size = new Size(280, 92);
+            grbBudget.Size = new Size(302, 92);
             grbBudget.TabIndex = 18;
             grbBudget.TabStop = false;
             grbBudget.Text = "Ngân sách";
+            // 
+            // btnAddFromExcel
+            // 
+            btnAddFromExcel.Location = new Point(191, 414);
+            btnAddFromExcel.Name = "btnAddFromExcel";
+            btnAddFromExcel.Size = new Size(94, 29);
+            btnAddFromExcel.TabIndex = 19;
+            btnAddFromExcel.Text = "Thêm excel";
+            btnAddFromExcel.UseVisualStyleBackColor = true;
+            btnAddFromExcel.Click += btnAddFromExcel_Click;
             // 
             // TourForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 483);
+            Controls.Add(btnAddFromExcel);
             Controls.Add(grbBudget);
             Controls.Add(btnReload);
             Controls.Add(btnAddTour);
@@ -236,5 +248,6 @@
         private Button btnAddTour;
         private Button btnReload;
         private GroupBox grbBudget;
+        private Button btnAddFromExcel;
     }
 }

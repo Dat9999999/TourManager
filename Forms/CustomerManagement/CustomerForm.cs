@@ -1,4 +1,6 @@
-﻿using TourManagerment.Services;
+﻿using OfficeOpenXml;
+using TourManagerment.Models;
+using TourManagerment.Services;
 
 namespace TourManagerment.Forms.CustomerManagement
 {
@@ -89,7 +91,7 @@ namespace TourManagerment.Forms.CustomerManagement
             dataGridViewCustomers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             if (dataGridViewCustomers.Columns["Id"] != null)
-                dataGridViewCustomers.Columns["Id"].HeaderText = "Id";
+                dataGridViewCustomers.Columns["Id"].HeaderText = "ID";
             if (dataGridViewCustomers.Columns["Name"] != null)
                 dataGridViewCustomers.Columns["Name"].HeaderText = "Tên";
             if (dataGridViewCustomers.Columns["Phone"] != null)
@@ -160,6 +162,96 @@ namespace TourManagerment.Forms.CustomerManagement
             string keyword = txtSearch.Text.Trim();
             var customers = await _customerService.SearchCustomersAsync(keyword);
             dataGridViewCustomers.DataSource = customers;
+        }
+
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "Lưu danh sách khách hàng";
+                saveFileDialog.FileName = "Customers_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        ExportToExcel(saveFileDialog.FileName);
+                        MessageBox.Show("Xuất file Excel thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi xuất file Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        //ExcelPackage.License.SetNonCommercialPersonal("My Name");
+
+        private void ExportToExcel(string filePath)
+        {
+            ExcelPackage.License.SetNonCommercialPersonal("My Name");
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Customers");
+                var customers = dataGridViewCustomers.DataSource as List<Customer>; // Cast to List<Customer>
+
+                if (customers == null)
+                {
+                    MessageBox.Show("Không có dữ liệu để xuất.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Thêm tiêu đề cột
+                int colIndex = 1;
+                foreach (DataGridViewColumn col in dataGridViewCustomers.Columns)
+                {
+                    if (!(col is DataGridViewButtonColumn) && col.Visible) // Bỏ qua cột nút và cột ẩn
+                    {
+                        worksheet.Cells[1, colIndex].Value = col.HeaderText;
+                        worksheet.Cells[1, colIndex].Style.Font.Bold = true;
+                        colIndex++;
+                    }
+                }
+
+                // Thêm dữ liệu từ List<Customer>
+                for (int row = 0; row < customers.Count; row++)
+                {
+                    colIndex = 1;
+                    var customer = customers[row];
+                    foreach (DataGridViewColumn col in dataGridViewCustomers.Columns)
+                    {
+                        if (!(col is DataGridViewButtonColumn) && col.Visible) // Bỏ qua cột nút và cột ẩn
+                        {
+                            // Lấy giá trị dựa trên tên cột
+                            switch (col.Name)
+                            {
+                                case "Id":
+                                    worksheet.Cells[row + 2, colIndex].Value = customer.Id;
+                                    break;
+                                case "Name":
+                                    worksheet.Cells[row + 2, colIndex].Value = customer.Name;
+                                    break;
+                                case "Phone":
+                                    worksheet.Cells[row + 2, colIndex].Value = customer.Phone;
+                                    break;
+                                case "Address":
+                                    worksheet.Cells[row + 2, colIndex].Value = customer.Address;
+                                    break;
+                            }
+                            colIndex++;
+                        }
+                    }
+                }
+
+                // Tự động điều chỉnh kích thước cột
+                worksheet.Cells.AutoFitColumns();
+
+                // Lưu file
+                File.WriteAllBytes(filePath, package.GetAsByteArray());
+            }
         }
     }
 }

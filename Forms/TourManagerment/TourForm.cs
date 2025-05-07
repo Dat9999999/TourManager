@@ -1,7 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using TourManagerment.Data;
+﻿using TourManagerment.Data;
 using TourManagerment.Forms.TourManagerment;
-using TourManagerment.Models;
 using TourManagerment.Services;
 
 namespace TourManagerment.Forms
@@ -46,9 +44,11 @@ namespace TourManagerment.Forms
         }
         private void showForm()
         {
-            dgvTourList.Columns["Id"].Visible = false; // Ẩn cột ID (chỉ dùng nội bộ)
+            if (dgvTourList.Columns["Id"] != null)
+                dgvTourList.Columns["Id"].HeaderText = "ID";
             dgvTourList.Columns["Name"].HeaderText = "Tên Tour";
             dgvTourList.Columns["Cost"].HeaderText = "Giá";
+            dgvTourList.Columns["Cost"].DefaultCellStyle.Format = "#,##0 VNĐ";
             dgvTourList.Columns["Duration"].HeaderText = "Thời gian (ngày)";
             dgvTourList.Columns["StartDate"].HeaderText = "Ngày bắt đầu";
             dgvTourList.Columns["EndDate"].HeaderText = "Ngày kết thúc";
@@ -178,7 +178,7 @@ namespace TourManagerment.Forms
         {
             TourForm_Load(sender, e);
             cbVehicle.Text = "";
-            cbTourType.Text ="";
+            cbTourType.Text = "";
             foreach (var rb in grbBudget.Controls.OfType<RadioButton>())
             {
                 rb.Checked = false;
@@ -218,17 +218,17 @@ namespace TourManagerment.Forms
                 {
                     switch (budget)
                     {
-                        case "Dưới $200":
-                            query = query.Where(t => t.Cost < 200);
+                        case "Dưới 1 triệu":
+                            query = query.Where(t => t.Cost < 1000000);
                             break;
-                        case "Từ $200 đến $400":
-                            query = query.Where(t => t.Cost >= 200 && t.Cost <= 400);
+                        case "Từ 1 đến 5 triệu":
+                            query = query.Where(t => t.Cost >= 1000000 && t.Cost <= 5000000);
                             break;
-                        case "Từ $400 đến $800":
-                            query = query.Where(t => t.Cost > 400 && t.Cost <= 800);
+                        case "Từ 5 đến 10 triệu":
+                            query = query.Where(t => t.Cost > 5000000 && t.Cost <= 10000000);
                             break;
-                        case "Trên $800":
-                            query = query.Where(t => t.Cost > 800);
+                        case "Trên 10 triệu":
+                            query = query.Where(t => t.Cost > 10000000);
                             break;
                     }
                 }
@@ -262,6 +262,12 @@ namespace TourManagerment.Forms
         private void rb1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddFromExcel_Click(object sender, EventArgs e)
+        {
+            Form AddTourExcel = new AddTourExcelForm();
+            AddTourExcel.ShowDialog();
         }
     }
 }

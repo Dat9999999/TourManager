@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Excels\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

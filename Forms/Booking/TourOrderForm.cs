@@ -136,7 +136,7 @@ namespace TourManagerment.Forms.Booking
             dataGridViewTourOrders.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Thêm tên cột cho DataGridView
-            dataGridViewTourOrders.Columns["Id"].HeaderText = "Id";
+            dataGridViewTourOrders.Columns["Id"].HeaderText = "ID";
             dataGridViewTourOrders.Columns["CustomerName"].HeaderText = "Tên";
             dataGridViewTourOrders.Columns["Phone"].HeaderText = "Số Điện Thoại";
             dataGridViewTourOrders.Columns["TourName"].HeaderText = "Tên Tour";

@@ -32,6 +32,7 @@
             btnCreate = new Button();
             txtSearch = new TextBox();
             btnSearch = new Button();
+            BtnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).BeginInit();
             SuspendLayout();
             // 
@@ -74,11 +75,22 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // BtnExport
+            // 
+            BtnExport.Location = new Point(670, 322);
+            BtnExport.Name = "BtnExport";
+            BtnExport.Size = new Size(118, 47);
+            BtnExport.TabIndex = 4;
+            BtnExport.Text = "Xuất Excel";
+            BtnExport.UseVisualStyleBackColor = true;
+            BtnExport.Click += BtnExport_Click;
+            // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnExport);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(btnCreate);
@@ -98,5 +110,6 @@
         private Button btnCreate;
         private TextBox txtSearch;
         private Button btnSearch;
+        private Button BtnExport;
     }
 }
